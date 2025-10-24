@@ -24,7 +24,7 @@ export const mockProducts: Product[] = [
         description: 'Comfortable office chair with lumbar support',
         active: true,
         createdAt: new Date('2025-02-20'),
-        sales: [12, 15, 18, 14, 16, 19, 17],
+        sales: [12, 15, 18, 4, 6, 9, 7],
         satisfaction: 'happy',
     },
     {
@@ -37,7 +37,7 @@ export const mockProducts: Product[] = [
         description: 'Pack of 3 premium cotton t-shirts',
         active: true,
         createdAt: new Date('2025-03-10'),
-        sales: [85, 92, 88, 95, 90, 98, 93],
+        sales: [10, 10, 10, 11, 10, 10, 10],
         satisfaction: 'neutral',
     },
     {

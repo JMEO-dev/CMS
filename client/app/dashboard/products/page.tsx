@@ -45,7 +45,7 @@ export default function ProductList() {
                 accessorKey: 'sku',
                 header: 'SKU',
                 cell: ({ row }) => (
-                    <code className="text-xs bg-muted px-2 py-1 rounded">{row.getValue('sku')}</code>
+                    <code className="px-2 py-1 text-xs rounded bg-muted">{row.getValue('sku')}</code>
                 ),
             },
             {
@@ -104,8 +104,8 @@ export default function ProductList() {
                 cell: ({ row }) => (
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" className="h-8 w-8 p-0">
-                                <MoreHorizontal className="h-4 w-4" />
+                            <Button variant="ghost" className="w-8 h-8 p-0">
+                                <MoreHorizontal className="w-4 h-4" />
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
@@ -144,10 +144,10 @@ export default function ProductList() {
             <div className="flex items-center justify-between mb-6">
                 <div>
                     <h1 className="text-3xl font-bold">Products</h1>
-                    <p className="text-muted-foreground mt-2">Manage your product inventory</p>
+                    <p className="mt-2 text-muted-foreground">Manage your product inventory</p>
                 </div>
                 <Button variant="outline" onClick={() => router.push('/dashboard/products/create')} className="bg-gradient-primary text-primary">
-                    <Plus className="mr-2 h-4 w-4" />
+                    <Plus className="w-4 h-4 mr-2" />
                     Add Product
                 </Button>
             </div>
@@ -158,7 +158,7 @@ export default function ProductList() {
                     <CardDescription>A comprehensive view of all your products</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <div className="flex flex-col md:flex-row gap-4 mb-4">
+                    <div className="flex flex-col gap-4 mb-4 md:flex-row">
                         <Input
                             placeholder="Search products..."
                             value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
@@ -190,7 +190,7 @@ export default function ProductList() {
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <Button variant="outline" className="ml-auto">
-                                    Columns <ChevronDown className="ml-2 h-4 w-4" />
+                                    Columns <ChevronDown className="w-4 h-4 ml-2" />
                                 </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
@@ -213,7 +213,7 @@ export default function ProductList() {
                         </DropdownMenu>
                     </div>
 
-                    <div className="rounded-md border">
+                    <div className="border rounded-md">
                         <Table>
                             <TableHeader>
                                 {table.getHeaderGroups().map((headerGroup) => (
@@ -262,7 +262,7 @@ export default function ProductList() {
                         </Table>
                     </div>
 
-                    <div className="flex items-center justify-between space-x-2 py-4">
+                    <div className="flex items-center justify-between py-4 space-x-2">
                         <div className="text-sm text-muted-foreground">
                             {table.getFilteredSelectedRowModel().rows.length} of{' '}
                             {table.getFilteredRowModel().rows.length} row(s) selected.
