@@ -46,6 +46,7 @@ export default function StatusBadge({ status, type = 'active' }: StatusBadgeProp
             if (status === 'delivered') return 'bg-success text-success-foreground';
             if (status === 'pending') return 'bg-warning text-warning-foreground';
             if (status === 'shipped') return 'bg-primary text-primary-foreground';
+            if (status === 'canceled') return 'bg-destructive text-destructive-foreground';
         }
 
         if (type === 'stock') {
@@ -61,7 +62,7 @@ export default function StatusBadge({ status, type = 'active' }: StatusBadgeProp
                 : 'bg-muted text-muted-foreground';
         }
 
-        return 'bg-muted text-muted-foreground';
+        return '';
     };
 
     return (

@@ -7,6 +7,7 @@ import { Package, ShoppingCart, Menu, Moon, Sun, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
+import { ProfileDropdownMenu } from '@/components/ProfileDropdown';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
@@ -37,10 +38,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
                 )}
             >
-                <div className="flex h-16 items-center px-6 border-b border-sidebar-border">
+                <div className="flex items-center h-16 px-6 border-b border-sidebar-border">
                     <div className="flex items-center gap-2">
-                        <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-                            <Package className="h-5 w-5 text-white" />
+                        <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-primary">
+                            <Package className="w-5 h-5 text-white" />
                         </div>
                         <span className="text-lg font-semibold text-sidebar-foreground">Dashboard</span>
                     </div>
@@ -62,7 +63,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                                 )}
                                 onClick={() => setSidebarOpen(false)}
                             >
-                                <Icon className="h-5 w-5" />
+                                <Icon className="w-5 h-5" />
                                 <span className="font-medium">{item.label}</span>
                             </Link>
                         );
@@ -74,14 +75,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <div className="md:pl-64">
                 {/* Top Bar */}
                 <header className="sticky top-0 z-30 h-16 border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
-                    <div className="flex h-full items-center justify-between px-4 md:px-6">
+                    <div className="flex items-center justify-between h-full px-4 md:px-6">
                         <Button
                             variant="ghost"
                             size="icon"
                             className="md:hidden"
                             onClick={() => setSidebarOpen(!sidebarOpen)}
                         >
-                            <Menu className="h-5 w-5" />
+                            <Menu className="w-5 h-5" />
                         </Button>
 
                         <div className="flex-1" />
@@ -89,17 +90,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                         <div className="flex items-center gap-3">
                             <Button variant="ghost" size="icon" onClick={toggleTheme}>
                                 {theme === 'light' ? (
-                                    <Moon className="h-5 w-5" />
+                                    <Moon className="w-5 h-5" />
                                 ) : (
-                                    <Sun className="h-5 w-5" />
+                                    <Sun className="w-5 h-5" />
                                 )}
                             </Button>
-
-                            <Avatar className="h-9 w-9 border-2 border-primary">
-                                <AvatarFallback className="bg-gradient-primary text-primary">
-                                    <User className="h-4 w-4" />
-                                </AvatarFallback>
-                            </Avatar>
+                            <ProfileDropdownMenu />
                         </div>
                     </div>
                 </header>

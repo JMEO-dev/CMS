@@ -108,7 +108,7 @@ export const mockOrders: Order[] = [
         clientName: 'Jane Smith',
         deliveryAddress: '456 Oak Ave, Los Angeles, CA 90001',
         paymentStatus: 'paid',
-        deliveryStatus: 'shipped',
+        deliveryStatus: 'pending',
         expectedDeliveryDate: new Date('2025-10-25'),
         totalAmount: 419.96,
         createdAt: new Date('2025-10-18'),
