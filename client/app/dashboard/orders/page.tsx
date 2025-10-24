@@ -245,7 +245,12 @@ export default function OrderList() {
                             <TableBody>
                                 {table.getRowModel().rows?.length ? (
                                     table.getRowModel().rows.map((row) => (
-                                        <TableRow key={row.id}>
+                                        <TableRow
+                                            key={row.id}
+                                            className="cursor-pointer hover:bg-muted/50"
+                                            onClick={() => router.push(`/dashboard/orders/${row.original.id}`)}
+
+                                        >
                                             {row.getVisibleCells().map((cell) => (
                                                 <TableCell key={cell.id}>
                                                     {flexRender(
