@@ -41,6 +41,9 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+  --color-gradient-primary: var(--gradient-primary);
+  --color-gradient-success: var(--gradient-success);
+  --color-gradient-card: var(--gradient-card);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --radius-sm: calc(var(--radius) - 4px);

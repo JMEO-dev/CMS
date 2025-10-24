@@ -5,11 +5,12 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Package, ShoppingCart, Menu, Moon, Sun, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 import { ProfileDropdownMenu } from '@/components/ProfileDropdown';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+    const { user, isAuthenticated } = useAuth();
     const pathname = usePathname();
     const [theme, setTheme] = useState<'light' | 'dark'>('light');
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -87,7 +88,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
                         <div className="flex-1" />
 
+
+
                         <div className="flex items-center gap-3">
+                            <div className='text-primary'>{isAuthenticated && (<>Hi, {user?.name}</>)}</div>
                             <Button variant="ghost" size="icon" onClick={toggleTheme}>
                                 {theme === 'light' ? (
                                     <Moon className="w-5 h-5" />

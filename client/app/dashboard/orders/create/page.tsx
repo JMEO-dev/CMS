@@ -100,14 +100,14 @@ export default function OrderCreate() {
                     onClick={() => router.push('/dashboard/orders')}
                     className="mb-4"
                 >
-                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    <ArrowLeft className="w-4 h-4 mr-2" />
                     Back to Orders
                 </Button>
                 <h1 className="text-3xl font-bold">Create New Order</h1>
-                <p className="text-muted-foreground mt-2">Process a new customer order</p>
+                <p className="mt-2 text-muted-foreground">Process a new customer order</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                 <div className="lg:col-span-2">
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -214,7 +214,7 @@ export default function OrderCreate() {
                                     <CardDescription>Payment and delivery information</CardDescription>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                                         <FormField
                                             control={form.control}
                                             name="paymentStatus"
@@ -283,7 +283,7 @@ export default function OrderCreate() {
                             </Card>
 
                             <div className="flex gap-3">
-                                <Button type="submit" className="bg-gradient-primary">
+                                <Button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/90">
                                     Create Order
                                 </Button>
                                 <Button
@@ -306,9 +306,9 @@ export default function OrderCreate() {
                             <CardDescription>Live order overview</CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-4">
-                            <div className="flex items-center gap-3 p-4 bg-muted/50 rounded-lg">
-                                <div className="h-12 w-12 rounded-lg bg-gradient-primary flex items-center justify-center">
-                                    <Package className="h-6 w-6 text-white" />
+                            <div className="flex items-center gap-3 p-4 rounded-lg bg-muted/50">
+                                <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-primary">
+                                    <Package className="w-6 h-6 text-white" />
                                 </div>
                                 <div className="flex-1">
                                     <p className="text-sm text-muted-foreground">Total Amount</p>
@@ -317,7 +317,7 @@ export default function OrderCreate() {
                             </div>
 
                             {watchProductId && (
-                                <div className="space-y-2 p-4 border rounded-lg">
+                                <div className="p-4 space-y-2 border rounded-lg">
                                     <p className="text-sm font-medium">Selected Product</p>
                                     <p className="text-sm text-muted-foreground">
                                         {mockProducts.find((p) => p.id === watchProductId)?.name}

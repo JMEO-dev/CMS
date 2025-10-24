@@ -75,11 +75,11 @@ export default function ProductCreate() {
                     onClick={() => router.push('/dashboard/products')}
                     className="mb-4"
                 >
-                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    <ArrowLeft className="w-4 h-4 mr-2" />
                     Back to Products
                 </Button>
                 <h1 className="text-3xl font-bold">Create New Product</h1>
-                <p className="text-muted-foreground mt-2">Add a new product to your inventory</p>
+                <p className="mt-2 text-muted-foreground">Add a new product to your inventory</p>
             </div>
 
             <Form {...form}>
@@ -105,7 +105,7 @@ export default function ProductCreate() {
                                 )}
                             />
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                                 <FormField
                                     control={form.control}
                                     name="sku"
@@ -174,7 +174,7 @@ export default function ProductCreate() {
                             <CardDescription>Pricing and stock information</CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-4">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                                 <FormField
                                     control={form.control}
                                     name="price"
@@ -183,7 +183,7 @@ export default function ProductCreate() {
                                             <FormLabel>Price *</FormLabel>
                                             <FormControl>
                                                 <div className="relative">
-                                                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                                                    <span className="absolute -translate-y-1/2 left-3 top-1/2 text-muted-foreground">
                                                         $
                                                     </span>
                                                     <Input
@@ -238,21 +238,21 @@ export default function ProductCreate() {
                                             <img
                                                 src={imagePreview}
                                                 alt="Preview"
-                                                className="h-32 w-32 object-cover rounded-lg border"
+                                                className="object-cover w-32 h-32 border rounded-lg"
                                             />
                                             <Button
                                                 type="button"
                                                 variant="destructive"
                                                 size="icon"
-                                                className="absolute -top-2 -right-2 h-6 w-6"
+                                                className="absolute w-6 h-6 -top-2 -right-2"
                                                 onClick={() => setImagePreview(null)}
                                             >
-                                                <X className="h-4 w-4" />
+                                                <X className="w-4 h-4" />
                                             </Button>
                                         </div>
                                     ) : (
-                                        <label className="flex flex-col items-center justify-center h-32 w-32 border-2 border-dashed rounded-lg cursor-pointer hover:bg-muted/50 transition-colors">
-                                            <Upload className="h-8 w-8 text-muted-foreground mb-2" />
+                                        <label className="flex flex-col items-center justify-center w-32 h-32 transition-colors border-2 border-dashed rounded-lg cursor-pointer hover:bg-muted/50">
+                                            <Upload className="w-8 h-8 mb-2 text-muted-foreground" />
                                             <span className="text-sm text-muted-foreground">Upload</span>
                                             <input
                                                 type="file"
@@ -269,7 +269,7 @@ export default function ProductCreate() {
                                 control={form.control}
                                 name="active"
                                 render={({ field }) => (
-                                    <FormItem className="flex items-center justify-between rounded-lg border p-4">
+                                    <FormItem className="flex items-center justify-between p-4 border rounded-lg">
                                         <div className="space-y-0.5">
                                             <FormLabel className="text-base">Active Status</FormLabel>
                                             <CardDescription>
@@ -286,7 +286,7 @@ export default function ProductCreate() {
                     </Card>
 
                     <div className="flex gap-3">
-                        <Button type="submit" className="bg-gradient-primary">
+                        <Button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/90">
                             Create Product
                         </Button>
                         <Button
