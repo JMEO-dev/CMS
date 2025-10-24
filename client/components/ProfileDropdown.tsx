@@ -1,3 +1,4 @@
+"use client";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -10,8 +11,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback } from "./ui/avatar"
 import { User } from "lucide-react"
-
+import { useAuth } from '@/contexts/AuthContext';
 export function ProfileDropdownMenu() {
+    const { logout } = useAuth();
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -40,7 +42,7 @@ export function ProfileDropdownMenu() {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Support</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={logout}>
                     Log out
                     <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                 </DropdownMenuItem>
