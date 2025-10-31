@@ -3,13 +3,15 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Package } from 'lucide-react';
+import useAuthStore from '@/store/authStore';
+import { User } from '@/store/authStore';
+import { useRouter } from 'next/navigation';
 const loginSchema = z.object({
     email: z.string().email('Invalid email address'),
     password: z.string().min(6, 'Password must be at least 6 characters'),
@@ -25,9 +27,10 @@ type LoginFormData = z.infer<typeof loginSchema>;
 type SignupFormData = z.infer<typeof signupSchema>;
 
 const Auth = () => {
-    const { login, signup } = useAuth();
+    const login = useAuthStore(state => state.login);
+    const signup = useAuthStore(state => state.signup);
     const [isLoading, setIsLoading] = useState(false);
-
+    const router = useRouter();
     const loginForm = useForm<LoginFormData>({
         resolver: zodResolver(loginSchema),
     });
@@ -38,8 +41,14 @@ const Auth = () => {
 
     const onLogin = async (data: LoginFormData) => {
         setIsLoading(true);
+        let user: User = {
+            email: data.email,
+            password: data.password
+        };
         try {
-            await login(data.email, data.password);
+            await login(user);
+            loginForm.reset();
+            router.push('/dashboard/products');
         } catch (error) {
             console.error('Login failed:', error);
         } finally {
@@ -49,8 +58,14 @@ const Auth = () => {
 
     const onSignup = async (data: SignupFormData) => {
         setIsLoading(true);
+        let user: User = {
+            email: data.email,
+            password: data.password
+        };
         try {
-            await signup(data.email, data.password, data.name);
+            await signup(user);
+            signupForm.reset();
+            router.push('/dashboard/products');
         } catch (error) {
             console.error('Signup failed:', error);
         } finally {

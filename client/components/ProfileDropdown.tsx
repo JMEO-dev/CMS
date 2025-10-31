@@ -11,9 +11,16 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback } from "./ui/avatar"
 import { User } from "lucide-react"
-import { useAuth } from '@/contexts/AuthContext';
+import useAuthStore from "@/store/authStore";
+import { useRouter } from "next/navigation";
 export function ProfileDropdownMenu() {
-    const { logout } = useAuth();
+    const router = useRouter();
+    const logout = useAuthStore(state => state.logout);
+
+    const handleLogout = () => {
+        logout();
+        router.push('/auth');
+    };
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -42,7 +49,7 @@ export function ProfileDropdownMenu() {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Support</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={logout}>
+                <DropdownMenuItem onClick={handleLogout}>
                     Log out
                     <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                 </DropdownMenuItem>

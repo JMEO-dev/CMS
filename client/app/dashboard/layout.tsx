@@ -7,12 +7,15 @@ import { Package, ShoppingCart, Menu, Moon, Sun, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ProfileDropdownMenu } from '@/components/ProfileDropdown';
-import { useAuth } from '@/contexts/AuthContext';
+import useAuthStore from '@/store/authStore';
+import useThemeStore from '@/store/themeStore';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-    const { user, isAuthenticated } = useAuth();
+    const user = useAuthStore(state => state.user);
+    const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+    const theme = useThemeStore(state => state.theme);
+    const toggleTheme = useThemeStore(state => state.toggleTheme);
     const pathname = usePathname();
-    const [theme, setTheme] = useState<'light' | 'dark'>('light');
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     useEffect(() => {
@@ -20,10 +23,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         root.classList.remove('light', 'dark');
         root.classList.add(theme);
     }, [theme]);
-
-    const toggleTheme = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-    };
 
     const navItems = [
         { path: '/dashboard/products', label: 'Products', icon: Package },
@@ -91,7 +90,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
 
                         <div className="flex items-center gap-3">
-                            <div className='text-primary'>{isAuthenticated && (<>Hi, {user?.name}</>)}</div>
                             <Button variant="ghost" size="icon" onClick={toggleTheme}>
                                 {theme === 'light' ? (
                                     <Moon className="w-5 h-5" />

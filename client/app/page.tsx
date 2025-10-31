@@ -1,14 +1,12 @@
 "use client";
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Package, ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
-
+import useAuthStore from '@/store/authStore';
 const Index = () => {
   const router = useRouter();
-  const { isAuthenticated } = useAuth();
-
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
   useEffect(() => {
     if (isAuthenticated) {
       router.push('/dashboard/products');
