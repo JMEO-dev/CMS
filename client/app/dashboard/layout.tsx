@@ -90,7 +90,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
 
                         <div className="flex items-center gap-3">
-                            <div className='text-primary'>{isAuthenticated && (<>Hi, {user?.name}</>)}</div>
                             <Button variant="ghost" size="icon" onClick={toggleTheme}>
                                 {theme === 'light' ? (
                                     <Moon className="w-5 h-5" />
