@@ -12,7 +12,7 @@ npm, Yarn, or pnpm
 
 # Getting Started
 1. Clone the Repository
-git clone https://github.com/JMEO-dev/CMS.git
+git clone git@github.com:JMEO-dev/e-store.git
 cd client 
 
 2. Install Dependencies
