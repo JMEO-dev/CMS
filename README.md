@@ -17,13 +17,13 @@ cd client
 
 2. Install Dependencies
 npm install
-# Or: yarn install
-# Or: pnpm install
+Or: yarn install
+Or: pnpm install
 
 3. Run the Development Server
 npm run dev
-# Or: yarn dev
-# Or: pnpm dev
+Or: yarn dev
+Or: pnpm dev
 
 Visit http://localhost:3000 to see the app
 
